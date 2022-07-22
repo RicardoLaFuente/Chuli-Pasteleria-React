@@ -1,0 +1,12 @@
+.navbar-primary {
+    float: left;
+    width: 100%;
+    box-shadow: 1px 3px 5px rgb(212, 182, 182);
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    .cart-widget {
+        display: flex;
+        align-items: center;
+    }
+}
