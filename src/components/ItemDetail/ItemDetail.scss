@@ -1,0 +1,66 @@
+.titulo {
+    color: #247272;
+    font-size: -webkit-xxx-large;
+    text-align: center;
+}
+.item-product {
+    float: left;
+    width: calc(20% - 8px);
+    box-shadow: 2px 2px 5px rgb(10 1 1 / 84%);
+    border: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    margin-right: 10px;
+    margin-bottom: 10px;
+
+    .float-options {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        p {
+            font-size: 12px;
+            padding: 5px;
+            margin: 0;
+            line-height: 16px;
+            width: 50px;
+            text-align: center;
+            background: #00a650;
+            color: white;
+        }
+        
+        button {
+            background: none;
+            border: none;
+            margin-right: 5px;
+        }
+    }
+    
+    img {
+        width: 80%;
+        margin-top: 15px;
+    }
+    .countProd {
+        display: flex;
+        /* height: 77px; */
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .countProd p {
+        font-size: 22px;
+    }
+    
+    .countProd button {
+        padding: 10px;
+        font-size: 27px;
+        margin: 10px;
+    }
+}
