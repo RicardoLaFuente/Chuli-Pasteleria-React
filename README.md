@@ -1,3 +1,26 @@
+# Descripcion de proyecto
+Este proyecto con nombre Chuli-Pasteleria esta armado para el curso de React en CoderHouse, 
+con la idea de poder realizar la pagina real en futuro para un emprendimiento de Pasteleria
+
+## Instalacion
+Disponible solo de forma local a través de clonación de repositorio.
+
+git clone https://github.com/RicardoLaFuente/Chuli-Pasteleria-React
+
+Se inicia con
+
+npm start
+
+### Dependencias
+Dependencias utilizadas en este proyecto
+"react-bootstrap"
+"react-router-dom"
+"react-icons"
+"@mui/icons-material"
+Aparte de las que vienen por defecto
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
