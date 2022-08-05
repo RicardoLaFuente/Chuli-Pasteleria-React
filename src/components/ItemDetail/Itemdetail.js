@@ -1,25 +1,26 @@
 import './ItemDetail.scss'
-const ItemDetail = () => {
+import ItemCount from '../ItemCount/ItemCount'
+import { useParams } from 'react-router-dom'
+
+const ItemDetail = ({data}) => {
+    const {title, image, price, stock, description, category,} = data
+    const {id}= useParams()
     return (
         <>
+            <h1>{category}</h1>
            <div className="item-product">
-                <div className='float-options'>
-                    <p>ENVIO GRATIS</p>
-                    <button></button>
-                </div>
                 <img src={`/assets/${image}`} alt="Imagen producto" />
                 <div className='detail-product'>
                     <p>{title}</p>
                     <p> 3 Cuotas sin interes</p>
                     <p>Envio Gratis Zona San Miguel</p>
                     <span>$ {price}</span>
-                    <p>Stock: {stock}</p>
-                    <div className='countProd'>
-                        <button>-</button>
-                        <p>{contador}</p>
-                        <button>+</button>
-                    </div>
+                    <ItemCount stock={stock}/>
+                    <button>Comprar</button>
                 </div>
+            </div>
+            <div>
+                <p>{description}</p>
             </div>
 
         </>

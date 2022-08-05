@@ -2,51 +2,65 @@ const products = [
     {
         id:1,
         title: "Box 1",
+        category: "Box",
         price: 5000,
         image: '/boxes/1-1.jpg',
-        stock: 6
+        stock: 6,
+        description: "Breve descripcion del Producto ",
     },
     {
         id:2,
         title: "Box 2",
+        category: "Box",
         price: 4000,
         image: '/boxes/1-2.jpg',
-        stock: 10
+        stock: 10,
+        description: "Breve descripcion del Producto ",
     },
     {
         id:3,
         title: "Box 3",
+        category: "Box",
         price: 4200,
         image: '/boxes/1-3.jpg',
-        stock: 10
+        stock: 10,
+        description: "Breve descripcion del Producto ",
     },
     {
         id:4,
         title: "Box 4",
+        category: "Box",
         price: 4000,
         image: '/boxes/2-1.jpg',
-        stock: 10
+        stock: 10,
+        description: "Breve descripcion del Producto ",
     },
     {
         id:5,
         title: "Cheescake",
+        category: "Tortas",
         price: 6000,
         image: '/tortas-clasicas/cheescake-1.jpg',
-        stock: 10
+        stock: 10,
+        description: "Breve descripcion del Producto ",
     },
     {
         id:6,
         title: "Chocotorta",
+        category: "Tortas",
         price: 5500,
         image: '/tortas-clasicas/choco-1.jpg',
-        stock: 10
+        stock: 10,
+        description: "Breve descripcion del Producto ",
     },
     {
         id:7,
         title: "Box 4",
+        category: "Box",
         price: 4000,
         image: '/boxes/2-1.jpg',
-        stock: 10
+        stock: 10,
+        description: "Breve descripcion del Producto ",
     },
 ]
 
