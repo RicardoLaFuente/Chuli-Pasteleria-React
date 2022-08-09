@@ -1,10 +1,13 @@
 import './ItemDetail.scss'
 import ItemCount from '../ItemCount/ItemCount'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
+import { useState } from 'react'
+
 
 const ItemDetail = ({data}) => {
     const {title, image, price, stock, description, category,} = data
     const {id}= useParams()
+    const [quantitySelected, setQuantitySelected] = useState (0)
     return (
         <>
             <h1>{category}</h1>
@@ -15,8 +18,12 @@ const ItemDetail = ({data}) => {
                     <p> 3 Cuotas sin interes</p>
                     <p>Envio Gratis Zona San Miguel</p>
                     <span>$ {price}</span>
-                    <ItemCount stock={stock}/>
-                    <button>Comprar</button>
+                    {console.log("quantitySelected", quantitySelected)}
+                    {
+                        quantitySelected > 0 ? <Link to="/cart"><button>TERMINAR COMPRA</button></Link> :  <ItemCount stock={stock} setQuantitySelected={setQuantitySelected}/>
+                    }
+                   
+                    
                 </div>
             </div>
             <div>

@@ -10,7 +10,7 @@ import Contacto from './components/Pages/Contacto';
 import ItemDetailConteiner from './components/ItemDetailConteiner/ItemDetailConteiner';
 import Detail from './components/Pages/Detail';
 import NavCategory from './components/NavCategory/NavCategory';
-
+import Checkout from './components/Pages/Checkout';
 
 function App() {
   return (
@@ -25,6 +25,7 @@ function App() {
           <Route path='/productos/:id' element={<Detail />} />
           <Route path='/contacto' element={<Contacto />} />
           <Route path='/nosotros' element={<Nosotros />} />
+          <Route path='/cart' element={<Checkout />} />
           <Route path='*' element={<h1>¡ERROR 404 - Pagina no encontrada!</h1>} />
         </Routes>
 
