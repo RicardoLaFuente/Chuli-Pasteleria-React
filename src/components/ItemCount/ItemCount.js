@@ -1,7 +1,9 @@
 import './ItemCount.scss'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import { CartContext } from '../../context/CartContext'
 
-const ItemCount = ({ stock, setQuantitySelected }) => {
+const ItemCount = ({ stock, setQuantitySelected, productData }) => {
+     const { addproductToCart } = useContext(CartContext)
 
      let stockVirtual = stock
      let disable = false
@@ -9,6 +11,8 @@ const ItemCount = ({ stock, setQuantitySelected }) => {
      const addProduct = () => count < stockVirtual ? setCount(count + 1) : disable = true
      const removeProduct = () => count > 1 ? setCount(count - 1) : disable = true
      const onAdd = () => {
+          
+          addproductToCart(productData)
           setQuantitySelected (count)
      }
 
