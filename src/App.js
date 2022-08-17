@@ -12,6 +12,7 @@ import Detail from './components/Pages/Detail';
 import NavCategory from './components/NavCategory/NavCategory';
 import Checkout from './components/Pages/Checkout';
 import CartProvider from './context/CartContext';
+import TerminarCompra from './components/Pages/TerminarCompra';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             <Route path='/contacto' element={<Contacto />} />
             <Route path='/nosotros' element={<Nosotros />} />
             <Route path='/cart' element={<Checkout />} />
+            <Route path='/terminarcompra' element={<TerminarCompra />} />
             <Route path='*' element={<h1>¡ERROR 404 - Pagina no encontrada!</h1>} />
           </Routes>
 
