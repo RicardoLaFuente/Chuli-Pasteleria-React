@@ -2,29 +2,32 @@ import { useEffect, useState } from "react"
 import ItemList from "../ItemList/ItemList"
 import './ItemListConteiner.scss'
 import products from "../../Utils/products.mock"
+import { collection , getDocs } from "firebase/firestore"
+import db from "../../firebaseConfig"
 
 
 const ItemListConeiner = ({ section }) => {
 
     const [listProducts, setListProducts] = useState([])
 
-    const getProducts = new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve(products)
-        }, 2000)
-    })
+    const getProducts = async () => {
+        const productCollection = collection(db, "products")
+        const productSnapshot = await getDocs(productCollection)
+        const productList = productSnapshot.docs.map ((doc) => {
+            let product = doc.data()
+            product.id = doc.id
+
+            return product
+        })
+        return productList
+    }
 
     useEffect(() => {
-        getProducts
-            .then((res) => {
-                console.log("Productos: ", res)
-                setListProducts(res)
-            })
-            .catch((error) => {
-                console.log("la llama fallo: ", error)
-            })
-            .finally(() => {
-            })
+        getProducts()
+        .then((res)=> {
+            setListProducts(res)
+        })
+          
     }, [])
 
 
