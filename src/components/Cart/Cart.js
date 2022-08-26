@@ -3,11 +3,55 @@ import ItemListConteiner from "../ItemListConteiner/ItemListConeiner";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import Table from "react-bootstrap/Table";
-import { useContext } from "react"
-import { CartContext } from "../../context/CartContext"
+import { useContext, useState } from "react";
+import { CartContext } from "../../context/CartContext";
+import Modal from "../Modal/Modal";
+import db from '../../firebaseConfig.js'
+import { collection, addDoc } from 'firebase/firestore'
+
 
 const Cart = () => {
-    const { cartProducts, clear, deleteProduct, totalProducts, } = useContext(CartContext)
+    const [showModal, setShowModal] = useState(false)
+    const { cartProducts, clear, deleteProduct, totalProducts, totalPrice } = useContext(CartContext)
+
+    const [success, setSuccess] = useState()
+
+    const [order, setOrder] = useState({
+        items: cartProducts.map((product) => {
+            return {
+                id: product.id,
+                title: product.title,
+                price: product.price
+            }
+        } ),
+        buyer: {},
+        date: new Date().toLocaleString(),
+        total: totalPrice
+    })
+    const [formData, setFormData] = useState({
+        name: '',
+        phone: '',
+        email:''
+    })
+
+
+
+    const handleChange = (e) => {
+        setFormData({...formData, [e.target.name] : e.target.value})
+    }
+
+    const submitData = (e) => {
+        e.preventDefault()
+        console.log("order para enviar: ", {...order, buyer: formData})
+        pushData({...order, buyer: formData})
+    }
+
+    const pushData = async (newOrder) => {
+        const collectionOrder = collection(db, 'ordenes')
+        const orderDoc = await addDoc(collectionOrder, newOrder)
+        setSuccess(orderDoc.id)
+        console.log('ORDEN GENERADA', orderDoc)
+    }
 
     return cartProducts === 0 ? (
         <>
@@ -25,7 +69,7 @@ const Cart = () => {
     ) : (
         <>
             <div className="container">
-               
+
                 <div>
                     <h5>Detalle del Carrito</h5>
                 </div>
@@ -64,7 +108,7 @@ const Cart = () => {
                                         <td>
                                             <div className="contenedorImporte">
                                                 <p className="tituloImporte">
-                                              
+
                                                     <p>{product.price}</p>
                                                 </p>
                                             </div>
@@ -106,20 +150,57 @@ const Cart = () => {
                                 </Link>
                             </td>
                             <td>
-                                <Link to={`/terminarcompra`}>
+                                
                                     <Button
-                                        onClick={() => clear()}
+                                     onClick={() => setShowModal(true)}
+                                       // onClick={() => clear()}
                                         className="buttonSize"
                                         variant="dark"
                                     >
                                         Terminar Compra
                                     </Button>
-                                </Link>
+                              
                             </td>
                         </tr>
                     </tfoot>
                 </Table>
             </div>
+            {showModal && 
+                    <Modal title="DATOS DE CONTACTO" close={() => setShowModal()}>
+                        {success ? (
+                            <>
+                               <h2>Su orden se genero correctamente</h2>
+                               <p>ID de compra : {success}</p>
+                            </>
+                        ) : (
+                            <form onSubmit={submitData}>
+                                <input 
+                                    type='text' 
+                                    name='name' 
+                                    placeholder='Ingrese el nombre'
+                                    onChange={handleChange}
+                                    value={formData.name}
+                                />
+                                <input 
+                                    type='number' 
+                                    name='phone' 
+                                    placeholder='Ingrese el telefono' 
+                                    value={formData.phone}
+                                    onChange={handleChange}
+                                />
+                                <input 
+                                    type='email' 
+                                    name='email' 
+                                    placeholder='Ingrese el mail'
+                                    value={formData.email}
+                                    onChange={handleChange}
+
+                                />
+                                <button type="submit">Enviar</button>
+                            </form>
+                        )}
+                    </Modal>
+                }
         </>
     );
 
