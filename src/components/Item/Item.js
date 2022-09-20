@@ -17,7 +17,7 @@ const Item = ({ data, action }) => {
                     <button></button>
                 </div>
                 <img src={`/assets/${image}`} alt="Imagen producto" />
-            </Link>
+            
             <div className='detail-product'>
                 <p>{title}</p>
                 <p> 3 Cuotas sin interes</p>
@@ -26,6 +26,7 @@ const Item = ({ data, action }) => {
                 <p>Stock: {stock}</p>
                 <ItemCount stock={stock} />
             </div>
+            </Link>
         </div>
 
     )

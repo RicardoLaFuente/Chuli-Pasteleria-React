@@ -33,7 +33,7 @@ const CartWidget = () => {
 
                         <div className='cart-widget'>
                             
-                            {console.log("cartProducts desde widget: ", cartProducts)}
+                          
                             {cartProducts.map((product) => {
                                 return (
                                     <div>
